@@ -26,7 +26,10 @@ class UserController extends Controller
             $users = $this->userService->users();
             return view('dashboard/pages/private/UserList', [
                 'users' => $users,
-                'pageData' => []
+                'pageData' => [
+                    'title'=> 'User List',
+                    'pageTitle' => 'User List'
+                ]
             ]);
         } catch (\Exception $e) {
             dd($e->getMessage());

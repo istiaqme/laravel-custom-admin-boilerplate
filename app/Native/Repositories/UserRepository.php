@@ -6,6 +6,7 @@ class UserRepository
 {
     
     private $userModel;
+    private $defaultOrder = 'id';
 
     function __construct(User $userModel)
     {
@@ -16,7 +17,7 @@ class UserRepository
         @no condition
     */
     public function loadAllUsers(){
-        return $this->userModel->get();
+        return $this->userModel->orderBy($this->defaultOrder, 'DESC')->get();
     }
 }
 

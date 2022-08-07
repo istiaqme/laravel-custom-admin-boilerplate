@@ -52,6 +52,32 @@
             </li>
 
             <li class="side-nav-title side-nav-item">Apps</li>
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarCrm" aria-expanded="false" aria-controls="sidebarCrm" class="side-nav-link">
+                    <i class="uil uil-tachometer-fast"></i>
+                    <span class="badge bg-danger text-white float-end">New</span>
+                    <span> Users </span>
+                </a>
+                <div class="collapse" id="sidebarCrm">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{ url('/private/user/list')}}">Lists</a>
+                        </li>
+                        <li>
+                            <a href="crm-projects.html">Project</a>
+                        </li>
+                        <li>
+                            <a href="crm-orders-list.html">Orders List</a>
+                        </li>
+                        <li>
+                            <a href="crm-clients.html">Clients</a>
+                        </li>
+                        <li>
+                            <a href="crm-management.html">Management</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
             <li class="side-nav-item">
                 <a href="apps-calendar.html" class="side-nav-link">
