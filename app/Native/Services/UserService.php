@@ -5,6 +5,8 @@ use App\Native\Repositories\UserRepository;
 class UserService
 {
     private $userRepository;
+
+
     function __construct(UserRepository $userRepository){
         $this->userRepository = $userRepository;
     }
