@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__.'/auth.php';
+
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test-login', function () {
-    return view('dashboard/pages/public/Login');
-});
-Route::get('/test-signup', function () {
-    return view('dashboard/pages/public/Signup');
-});
-Route::get('/test-bug', [TestController::class, 'index']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard/pages/private/dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+

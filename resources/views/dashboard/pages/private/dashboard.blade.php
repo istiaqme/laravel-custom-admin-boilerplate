@@ -1,10 +1,7 @@
-
-<h4>Welcome aboard</h4>
-
-{{-- @extends('dashboard/layouts/CommonLayout')
+@extends('dashboard/layouts/CommonLayout')
 @section('title', 'Meta Title')
 @section('pageTitle', 'Page Title')
 
 @section('MAIN_PAGE_CONTENT')
     <h1>Ye Sharabi Kiya Sharabi</h1>
-@endsection --}}
+@endsection
