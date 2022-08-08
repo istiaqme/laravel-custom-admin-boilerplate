@@ -6,6 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
             <form action="{{ url('/private/user/create') }}" method="POST">
+                @csrf
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="example-name" class="form-label">Name</label>
@@ -29,7 +30,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Create User</button>
+                    <button type="submit" class="btn btn-primary">Create User</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Ramsey\Uuid\Uuid;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -34,13 +35,21 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         // $request->session()->regenerate();
         $newSession = new UserSession();
-        $newSession->user_id = Auth::user()->id;
-        $newSession->status = 1;
+        $newSession->token = str_replace('-', '__s__', Uuid::uuid4());
+        $newSession->user_token = Auth::user()->token;
+        $newSession->ip = $request->ip();
+        $newSession->user_agent = $request->header('user-agent');
         $newSession->save();
 
-        Session::put('session_id', $newSession->id);
+        // to do - get all permissions of the user
+        $permissions = [];
+        // Pre set data in session to use in AppRequired
+        Session::put('sessionToken', $newSession->token);
+        Session::put('userToken', Auth::user()->token);
+        Session::put('userKind', Auth::user()->kind);
+        Session::put('permissions', $permissions);
 
-        if(Auth::user()->kind == 'official') {
+        if(Auth::user()->kind == 'Official') {
             return redirect()->to('dashboard');
         }
 

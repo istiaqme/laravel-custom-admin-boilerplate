@@ -6,12 +6,12 @@ class AppRequired
 {
     public $userToken;
     public $userSession;
-    public $permission;
+    public $permissions;
     
-    function __construct($request, $auth, $session) {
-        $this->userToken = $auth->user_token;
-        $this->userSession = $session->token;
-        $this->permission = $request->permission;
+    function __construct($request) {
+        $this->userToken = $request->session()->get('userToken');
+        $this->userSession = $request->session()->get('sessionToken');
+        $this->permissions = $request->session()->get('permissions');
     }
     
     public function add($keyValuePairs){

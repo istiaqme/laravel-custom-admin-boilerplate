@@ -8,12 +8,13 @@ use Exeception;
 use App\Http\Controllers\Controller;
 
 use App\Native\Services\UserService;
+use App\Native\DataModels\AppRequired;
 
 
 class UserController extends Controller
 {
     private $userService;
-
+    
     function __construct(UserService $userService){
         $this->userService = $userService;
     }
@@ -41,7 +42,9 @@ class UserController extends Controller
     public function privateUserCreateAction(Request $request){
         
         try {
-            $users = $this->userService->users();
+            $appRequired = new AppRequired($request);
+            dd($appRequired);
+            $users = $this->userService->create($appRequired, $request);
             return view('dashboard/pages/private/UserList', [
                 'users' => $users,
                 'pageData' => [
