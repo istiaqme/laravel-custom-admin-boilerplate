@@ -31,6 +31,8 @@ class UserService
             throw new AppResourceFoundError('User already exists.');
         }
         $methodRequired->token = $this->makeToken();
+        $methodRequired->name = ucfirst($methodRequired->name);
+        $methodRequired->email = strtolower($methodRequired->email);
         $methodRequired->password = Hash::make($methodRequired->password);
 
         return $this->userRepository->create($methodRequired);
@@ -45,9 +47,34 @@ class UserService
         
         return $this->userRepository->regularUpdate(
             $methodRequired->token, 
-            $methodRequired->name, 
-            $methodRequired->email, 
+            ucfirst($methodRequired->name), 
+            strtolower($methodRequired->email), 
             $methodRequired->kind
+        );
+    }
+    /* 
+        @updates a user's password
+    */
+    public function passwordUpdate($appRequired, $methodRequired){
+        if(!$this->userRepository->singleUserByToken(($methodRequired->token))){
+            throw new AppResourceNotFoundError('User does not exist.');
+        }
+        
+        return $this->userRepository->passwordUpdate(
+            $methodRequired->token, 
+            Hash::make($methodRequired->password)
+        );
+    }
+    /* 
+        @deletes a user
+    */
+    public function discard($appRequired, $methodRequired){
+        if(!$this->userRepository->singleUserByToken(($methodRequired->token))){
+            throw new AppResourceNotFoundError('User does not exist.');
+        }
+        
+        return $this->userRepository->discard(
+            $methodRequired->token
         );
     }
 }

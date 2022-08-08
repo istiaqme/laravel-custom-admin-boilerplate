@@ -57,6 +57,21 @@ class UserRepository
         $user->save();
         return $user;
     }
+    /* 
+        @updates a user's password
+    */
+    public function passwordUpdate($token, $password){
+        $user = $this->userModel->where('token', $token)->first();
+        $user->password = $password;
+        $user->save();
+        return $user;
+    }
+    /* 
+        @deletes a user
+    */
+    public function discard($token){
+        return $this->userModel->where('token', $token)->first()->delete();
+    }
 }
 
 

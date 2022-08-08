@@ -54,12 +54,18 @@
                                         <a href="javascript:void(0);" class="action-icon" data-bs-toggle="modal" data-bs-target="#edit-user-modal{{$row->id}}"> 
                                             <i class="mdi mdi-square-edit-outline"></i>
                                         </a>
-                                        {{-- <a href="javascript:void(0);" class="action-icon" data-bs-toggle="modal" data-bs-target="#edit-user-modal"> 
-                                            <i class="mdi mdi-delete"></i>
-                                        </a> --}}
+                                        <a href="javascript:void(0);" class="action-icon" data-bs-toggle="modal" data-bs-target="#edit-user-password-modal{{$row->id}}"> 
+                                            <i class="mdi mdi-lock-remove-outline"></i>
+                                        </a>
+                                        <a href="javascript:void(0);" class="action-icon" data-bs-toggle="modal" data-bs-target="#showcase-user-details-modal{{$row->id}}"> 
+                                            <i class="mdi mdi-application-settings-outline"></i>
+                                        </a>
+                                        
                                     </td>
                                 </tr>
                                 @include('dashboard/widgets/forms/UpdateUserModal')
+                                @include('dashboard/widgets/forms/UpdateUserPasswordModal')
+                                @include('dashboard/widgets/showcase/UserDetailsModal')
                             @endforeach
                                                       
                           

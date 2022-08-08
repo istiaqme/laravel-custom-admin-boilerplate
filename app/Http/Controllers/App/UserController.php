@@ -53,7 +53,7 @@ class UserController extends Controller
         }
     }
     /* 
-        @create private user update action  - POST
+        @update private user update action  - POST
     */
     public function privateUserUpdateAction(Request $request){
         
@@ -62,7 +62,39 @@ class UserController extends Controller
             $this->userService->regularUpdate($appRequired, $request);
             return redirect()->back()->with([
                 'appMessage' => 'User has been updated successfully.',
-                'appMessageType' => 'success'
+                'appMessageType' => 'primary'
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+    /* 
+        @update private user password update action  - POST
+    */
+    public function privateUserPasswordUpdateAction(Request $request){
+        
+        try {
+            $appRequired = new AppRequired($request);
+            $updatedRow = $this->userService->passwordUpdate($appRequired, $request);
+            return redirect()->back()->with([
+                'appMessage' => "Password has been updated successfully for $updatedRow->name",
+                'appMessageType' => 'info'
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+    /* 
+        @delete private user action - GET
+    */
+    public function privateUserDiscardAction(Request $request){
+        
+        try {
+            $appRequired = new AppRequired($request);
+            $updatedRow = $this->userService->discard($appRequired, $request);
+            return redirect()->back()->with([
+                'appMessage' => "User has been discarded from storage.",
+                'appMessageType' => 'warning'
             ]);
         } catch (\Exception $e) {
             dd($e->getMessage());
