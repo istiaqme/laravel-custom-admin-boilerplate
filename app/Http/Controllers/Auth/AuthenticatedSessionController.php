@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\UserSession;
+use App\Native\Repositories\UserSessionRepository;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -64,6 +65,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        UserSession::where('token', $request->session()->get('sessionToken'))->first()->delete();
+        
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
