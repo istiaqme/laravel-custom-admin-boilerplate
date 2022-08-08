@@ -43,17 +43,30 @@ class UserController extends Controller
         
         try {
             $appRequired = new AppRequired($request);
-            dd($appRequired);
-            $users = $this->userService->create($appRequired, $request);
-            return view('dashboard/pages/private/UserList', [
-                'users' => $users,
-                'pageData' => [
-                    'title'=> 'User List',
-                    'pageTitle' => 'User List'
-                ]
+            $this->userService->create($appRequired, $request);
+            return redirect()->back()->with([
+                'appMessage' => 'A new user has been created.',
+                'appMessageType' => 'success'
             ]);
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
     }
+    /* 
+        @create private user update action  - POST
+    */
+    public function privateUserUpdateAction(Request $request){
+        
+        try {
+            $appRequired = new AppRequired($request);
+            $this->userService->regularUpdate($appRequired, $request);
+            return redirect()->back()->with([
+                'appMessage' => 'User has been updated successfully.',
+                'appMessageType' => 'success'
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+    
 }

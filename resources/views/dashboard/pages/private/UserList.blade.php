@@ -28,7 +28,7 @@
                         @include('dashboard/widgets/forms/CreateUserModal')
                     </div><!-- end col-->
                 </div>
-
+                @include('dashboard/widgets/alerts/AppMessageAlert')
                 <div class="table-responsive">
                     <table class="table table-centered table-nowrap mb-0">
                         <thead class="table-light">
@@ -42,9 +42,9 @@
                         </thead>
                         <tbody>
 
-                            @foreach ($users as $row)
+                            @foreach ($users as $key => $row)
                                 <tr>
-                                    <td>1</td>
+                                    <td>{{ count($users) - $key }}</td>
                                     <td>
                                         <b>{{ $row->name }}</b>
                                     </td>

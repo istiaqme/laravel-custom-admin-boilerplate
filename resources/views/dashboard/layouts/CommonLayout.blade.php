@@ -11,6 +11,8 @@
         <!-- App css -->
         <link href="{{asset('assets/dashboard/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/dashboard/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style"/>
+        <script src="{{asset('assets/dashboard/assets/js/vendor.min.js')}}"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
 
     <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
@@ -161,8 +163,9 @@
 
 
         <!-- bundle -->
-        <script src="{{asset('assets/dashboard/assets/js/vendor.min.js')}}"></script>
+        
         <script src="{{asset('assets/dashboard/assets/js/app.min.js')}}"></script>
+        
         
     </body>
 
