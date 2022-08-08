@@ -19,6 +19,19 @@ class UserRepository
     public function loadAllUsers(){
         return $this->userModel->orderBy($this->defaultOrder, 'DESC')->get();
     }
+    /* 
+        @creates new user
+    */
+    public function create($data){
+        $newRow = new User();
+        $newRow->token = $data->token;
+        $newRow->name = $data->name;
+        $newRow->email = $data->email;
+        $newRow->password = $data->password;
+        $newRow->kind = $data->kind;
+        $newRow->save();
+        return $newRow;
+    }
 }
 
 

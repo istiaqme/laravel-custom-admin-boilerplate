@@ -18,8 +18,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'App Test Admin',
             'email' => 'admin@admin.com', 
             'password' => bcrypt('123456'),
-            'kind' => 'official',
-            'token' => 'system generated token'
+            'kind' => 'Official',
+            'token' => 'seedrToken101'
         ]);
     }
 }

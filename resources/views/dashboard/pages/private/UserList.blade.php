@@ -15,20 +15,6 @@
                                 <label for="inputPassword2" class="visually-hidden">Search</label>
                                 <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
                             </div>
-                            <div class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <label for="status-select" class="me-2">Status</label>
-                                    <select class="form-select" id="status-select">
-                                        <option selected="">Choose...</option>
-                                        <option value="1">Paid</option>
-                                        <option value="2">Awaiting Authorization</option>
-                                        <option value="3">Payment failed</option>
-                                        <option value="4">Cash On Delivery</option>
-                                        <option value="5">Fulfilled</option>
-                                        <option value="6">Unfulfilled</option>
-                                    </select>
-                                </div>
-                            </div>
                         </form>                            
                     </div>
                     <div class="col-xl-4">
@@ -59,7 +45,9 @@
                             @foreach ($users as $row)
                                 <tr>
                                     <td>1</td>
-                                    <td>{{ $row->name }}</td>
+                                    <td>
+                                        <b>{{ $row->name }}</b>
+                                    </td>
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->kind }}</td>
                                     <td>

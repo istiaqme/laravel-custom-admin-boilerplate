@@ -18,9 +18,27 @@ class UserController extends Controller
         $this->userService = $userService;
     }
     /* 
-        @loads private user list page view
+        @loads private user list page view - GET
     */
     public function privateUserListPage(){
+        
+        try {
+            $users = $this->userService->users();
+            return view('dashboard/pages/private/UserList', [
+                'users' => $users,
+                'pageData' => [
+                    'title'=> 'User List',
+                    'pageTitle' => 'User List'
+                ]
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+    /* 
+        @create private user action  - POST
+    */
+    public function privateUserCreateAction(Request $request){
         
         try {
             $users = $this->userService->users();

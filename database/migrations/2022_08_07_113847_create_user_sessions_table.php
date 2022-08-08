@@ -15,8 +15,11 @@ class CreateUserSessionsTable extends Migration
     {
         Schema::create('user_sessions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->tinyInteger('status');
+            $table->string('token');
+            $table->string('user_token');
+            $table->string('ip');
+            $table->string('user_agent');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

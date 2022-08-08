@@ -5,7 +5,7 @@
                 <h4 class="modal-title" id="standard-modalLabel">Create User</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
-            <form action="">
+            <form action="{{ url('/private/user/create') }}" method="POST">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="example-name" class="form-label">Name</label>
@@ -22,10 +22,8 @@
                     <div class="mb-3">
                         <label for="example-select" class="form-label">Select User Type</label>
                         <select class="form-select" name="kind">
-                            <option value="official">Official</option>
-                            <option value="superadmin">Super Admin</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
+                            <option value="Official">Official</option>
+                            <option value="User">User</option>
                         </select>
                     </div>
                 </div>
