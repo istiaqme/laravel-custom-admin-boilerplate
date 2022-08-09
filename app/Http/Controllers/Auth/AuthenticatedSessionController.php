@@ -53,6 +53,8 @@ class AuthenticatedSessionController extends Controller
 
         if(Auth::user()->kind == 'Official') {
             return redirect()->to('dashboard');
+        }else{
+            return redirect()->to('dashboard'); // return to other dashboard
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);
