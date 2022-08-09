@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Ramsey\Uuid\Uuid;
 
+
 class AuthenticatedSessionController extends Controller
 {
     /**

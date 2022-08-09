@@ -11,6 +11,7 @@ use Illuminate\Validation\ValidationException;
 
 class LoginRequest extends FormRequest
 {
+    private $rememberMe = true;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -45,7 +46,7 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        if (! Auth::attempt($this->only('email', 'password'), $this->rememberMe)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([

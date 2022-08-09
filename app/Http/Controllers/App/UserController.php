@@ -91,7 +91,7 @@ class UserController extends Controller
         
         try {
             $appRequired = new AppRequired($request);
-            $updatedRow = $this->userService->discard($appRequired, $request);
+            $this->userService->discard($appRequired, $request);
             return redirect()->back()->with([
                 'appMessage' => "User has been discarded from storage.",
                 'appMessageType' => 'warning'
